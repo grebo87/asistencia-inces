@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>E.B "Nuestra Señora del Carmen" </title>
+
+<link rel="stylesheet" type="text/css" href="/SISTEMA/CSS/Style_Sistema.css"/>
+
+<link rel="stylesheet" type="text/css" href="css/style_Formulario.css"  />
+</head>
+
+<body>
+<div>
+<!-- Inicio - Encabezado de Pagina -->
+
+<table id="Tabla_Principal">
+
+<th>
+<a href="/SISTEMA/Inicio/Inicio.html" title="Pagina de inicio"><img src="/SISTEMA/Imagenes_Sistema/inces.png" id="img_Logo_Escuela"></a></th>
+<th>
+ <h2 id="h2"> Sistema de Control de Asistencia del inces </h2>
+</th>
+<!-- Final - Encabezado de Pagina -->
+
+
+<table id="Tab_IS">
+<!--Formulario de Inicio de Sesion-->
+	 
+<div id="contact">
+
+	<h1>Inicio de Sesión</h1>
+	<form action="#" method="post">
+		<fieldset>
+			<label for="nombreusu">Nombre de Usuario:</label>
+			<input type="text" id="nombreusu" placeholder="Ej: Administrador" required />
+			<br/>
+			<label for="contraseña">Contraseña: </label>
+			<br />
+			<input type="password" id="contraseña" placeholder="Ej: 12345678"   required />
+			
+			
+			<input type="submit" value="Iniciar Sesión"  id="iniciar"  / > 
+			<input type="reset" value="Borrar información" id="borrar"/>
+			
+			
+		</fieldset>
+	</form>
+</div>
+
+
+</table>
+</body>
+</html>

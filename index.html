@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>inces </title>
+
+<link href="Style_Registro_Asistencia.css" rel="stylesheet" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/SISTEMA/CSS/Style_Sistema.css"/>
+
+</head>
+
+<body>
+<div>
+<!-- Inicio - Encabezado de Pagina -->
+
+    <table id="Tabla_Principal">
+
+<tr>
+    <img src="/SISTEMA/Imagenes_Sistema/LogoMinisterio.jpg" id="img_Logo_Ministerio">
+</tr>
+<th>
+<img src="/SISTEMA/Imagenes_Sistema/inces.png" id="img_Logo_Escuela">
+</th>
+<th>
+ <h2 id="h2"> Sistema de Control de Asistencia del inces </h2>
+</th>
+    </table>
+<!-- Final - Encabezado de Pagina -->
+
+<!-- Inicio Del Menu Lateral-->
+<table id="Menu_Vertical" >
+<th>
+<div class="Menu_Lateral">
+  <nav class="vertical">
+    
+  </nav>
+  </th>
+
+</div>
+</table>
+<!-- Final Del Menu Lateral 
+<p>
+<?php echo date('h:i:s  a')  ;?></p>
+
+-->
+
+<div id="Contacto">
+
+
+
+
+
+
+
+
+
+  <h1>Registro de Asistencia</h1>
+   <form  action="/SISTEMA/Gestionar_Personal/Registro_De_Usuario/asistencia1.php" enctype="multipart/form-data" method="POST" name="formulario" id="formulario">
+    <fieldset>
+      <label class="label_formulario" for="cedula">Cedula: </label>
+  <input type="text" id="cedula" name="cedula" placeholder="Ej: 12345678" maxlength="8" required  />
+    
+        <br>
+      <table><tr><td>
+<input type="radio" name="radiog_dark" id="radio4" class="css-checkbox style="margin-left=20px"" />
+
+
+</table>
+      
+      <input type="submit" value="Enviar" />  
+    </form>
+
+   <a class="a1" href="/SISTEMA/Inicio_De_Sesion/Formulario_Inicio_Sesion.php"></br></br></br></br>
+   <input type="button"  value="Iniciar Sesión" >
+    </a>
+     </fieldset>
+
+</div>
+</body>
+</html>

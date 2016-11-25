@@ -1,0 +1,206 @@
+<?php
+
+	class usuario {
+	
+		private 	$nombre;
+		private $apellido;
+		private $cedula;
+	
+		private $correo;
+		private $cargo;
+		private $fecha;
+	
+	
+
+
+
+
+		public function __construct(	$nombre,$apellido,$cedula,$correo,$cargo,$fecha){
+		
+		$this->nombre=$nombre;
+		$this->apellido=$apellido;
+		$this->cedula=$cedula;
+		$this->correo=$correo;
+		$this->cargo=$cargo;
+		$this->fecha=$fecha;
+		include_once('../../conectar.php');
+	
+			
+		}
+		
+		public function registrar_usuario(){
+			
+			
+$sql="INSERT INTO personal md5(nombre,apellido,cedula,correo,cargo,fecha) VALUES ('$this->nombre','$this->apellido','$this->cedula','$this->correo','$this->cargo','$this->fecha')";
+
+$result = pg_query($sql);					
+
+
+	if(!$result)
+			{
+				echo"<script> alert ('Uno de sus datoskmñlkvmlkjmdcpjmvlcmlkmclmpclk mcMLPmlm no han sido correctos ¡Vuelva a Intentarlo!');</script>";
+				echo"<script> location.href='RegUser.html';</script> ";
+			}
+			else
+			{
+	echo"<script> alert ('datos guardados!');</script>";
+	echo"<script> location.href='RegUser.html';</script> ";
+	}
+
+
+
+
+	
+}
+
+
+
+
+
+
+public function buscar($cedula) 
+
+{
+$conectar = new conectar();
+
+$sql="SELECT * FROM personal WHERE cedula='$cedula'";
+$result=pg_query($conectar->con(), $sql);
+$encontrados=pg_num_rows($result);
+
+
+if($encontrados>0){ 
+
+echo'<div id="Contacto">
+    <h1>Registrar Datos</h1>
+<h3>Datos Personales del Docente</h3><table ';
+
+while($datos=pg_fetch_array($result)) {
+
+echo  '
+
+
+<tr><td id="encatabla">Nombre: </td><td>'.$datos['nombre'].'</td></tr>
+<tr><td id="encatabla">Apellido: </td><td>'.$datos['apellido'].'</td></tr>
+<tr><td id="encatabla">Cedula: </td><td>'.$datos['cedula'].'</td></tr>
+<tr><td id="encatabla">Fecha de nacimiento: </td><td>'.$datos['fecha'].'</td></tr>
+<tr><td id="encatabla">correo: </td><td>'.$datos['correo'].'</td></tr>';
+}
+echo '</table>';
+} else {
+echo '<center><h3>No se ha encontrado al Docente!</h3><br/><a href="buscar_docente.html">Intente nuevamente</a></center>';
+}
+echo"
+</div>
+</div>
+";
+return $buscar;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+/*
+		public function abrir_sesion($correo,$contrasena){
+		if (empty($correo) or empty($contrasena))
+		{
+			echo "<script type='text/javascript'>
+				alert('Ud. debe llenar los campos');
+				location.href='../index.php';
+			</script>";
+		}else{
+			$sql="SELECT * FROM usuario WHERE correo='$correo' and contrasena='$contrasena'"; //compara los datos ingresados con los existentes en la base de datos
+			$resultado=pg_query($sql); //si existen y el resultado es exacto devuelve un resultado
+			$cant=pg_num_rows($resultado); //resultado obtenido como correcto
+
+				if($cant > 0){
+    					    					
+        				session_start();
+        				$_SESSION['correo']=$correo;
+        				
+        				$sql2="SELECT tipo FROM usuario WHERE correo='$correo' and contrasena='$contrasena'";
+        				$resultado2=pg_exec($sql2);
+        				$encontrad=pg_num_rows($resultado2);
+            
+        				$resultusera=pg_fetch_array($resultado2);
+        
+        				$tipo=$resultusera['tipo'];
+        
+        
+        					if ($tipo=='personal') {
+        
+        						header("location:../administrador/php/inicio.php");
+        					}
+        
+        					if ($tipo=='usuario') {
+        
+       						 header("location:../php/inicio.php");
+        
+        					}
+        
+        
+        				}
+					else
+     				{
+    						echo "<script>alert('Su nombre de usuario o su clave son incorrectos, verifique e intente nuevamente!')</script>"; //se mostrara este mensaje de alerta con un script
+		    				echo "<script>location.href = '../index.php';</script>"; //redirecciona al usuario otra vez a la pantalla principal del sistema
+   	  				}
+			}
+	}
+	
+	public function update_contrasena($correo,$contrasena)
+	{
+		$up="UPDATE usuario SET contrasena='$contrasena' WHERE correo='$correo'";
+		$res=pg_exec($up);
+		
+		if(!$res)
+		{
+			echo "<script>alert('Error de Actualizacion de Contraseña!!');</script>"; //se mostrara este mensaje de alerta con un script
+			echo "<script>location.href = '../php/recuperar_contrasena.php';</script>";
+		}else{
+		
+					session_start();
+        				$_SESSION['correo']=$correo;
+        				
+        				$sql2="SELECT tipo FROM usuario WHERE correo='$correo'";
+        				$resultado2=pg_exec($sql2);
+        				$encontrad=pg_num_rows($resultado2);
+            
+        				$resultusera=pg_fetch_array($resultado2);
+        
+        				$tipo=$resultusera['tipo'];
+        
+        
+        					if ($tipo=='personal') {
+        						echo "<script>alert('La Contraseña fue actualizada! Intente Iniciar Sesion como metodo de verificacion!!')</script>"; //se mostrara este mensaje de alerta con un script
+							echo "<script>location.href = '../administrador/php/inicio.php';</script>"; //redirecciona al usuario otra vez a la pantalla de inicio
+        					
+        					}
+        
+        					if ($tipo=='usuario') {
+        						echo "<script>alert('La Contraseña fue actualizada! Intente Iniciar Sesion como metodo de verificacion!!')</script>"; //se mostrara este mensaje de alerta con un script
+							echo "<script>location.href = '../php/inicio.php';</script>"; //redirecciona al usuario otra vez a la pantalla de inicio
+        
+        					}
+		}	
+	
+	}
+*/
+?>
