@@ -252,20 +252,17 @@ public function asistencia1($cedula = ''){
 			}
 }
 
-public function inasistencia1()
-		{
+	public function inasistencia1($cedula = '', $observacion = ''){
+
 			include_once('../../conectar.php');
-	$conectar = new conectar();
+			$conectar = new conectar();
 
 
-$fecha=date('d-m-Y');
- $hora =date('h:i:s');
+			$fecha=date('d-m-Y');
+ 			$hora =date('h:i:s');
+			$sql="INSERT INTO inasitencia(fecha,hora,cedula,observacion) VALUES ('$fecha','$hora','$cedula','$observacion')";
 
-$cedula=$_POST['cedula'];
-$observacion=$_POST['observacion'];		
-$sql="INSERT INTO inasitencia(fecha,hora,cedula,observacion) VALUES ('$fecha','$hora','$cedula','$observacion')";
-
-$result= pg_query($conectar->con(),$sql);					
+			$result= pg_query($conectar->con(),$sql);					
 
 
 
