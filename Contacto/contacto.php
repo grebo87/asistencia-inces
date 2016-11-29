@@ -40,11 +40,11 @@
         <fieldset>
            <br />
             <label class="label_formulario">Nombres:</label>
-            <input  type="text" value="Erimar Campos" readonly="readonly" required  />
+            <input  type="text" value="" readonly="readonly" required  />
             <label class="label_formulario">Correo</label>
-            <input  type="text" value="erimar_campos@hotmail.com" readonly="readonly"  required />
+            <input  type="text" value="" readonly="readonly"  required />
             <label class="label_formulario">Telefono: </label>
-            <input type="text" value="0424-8418265	" readonly="readonly"  required  />
+            <input type="text" value="" readonly="readonly"  required  />
    
           
             
