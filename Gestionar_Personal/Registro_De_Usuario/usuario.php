@@ -365,10 +365,9 @@ public function historial($cedula)
 		include_once('../../conectar.php');
 $conectar = new conectar();
 
-$sql="SELECT * from actividad,personal where personal.cedula='$cedula'";
+$sql="SELECT * from actividad,personal where personal.cedula='$cedula' and actividad.cedula='$cedula'";
 $result=pg_query($conectar->con(), $sql);
 $encontrados=pg_num_rows($result);
-
 
 if($encontrados>0){ 
 
