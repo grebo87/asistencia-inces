@@ -92,7 +92,6 @@ class usuario {
 	*/	
 	public function consultarUsuario($cedula) {
 
-		$conectar = new conectar();
 		$sql="SELECT * FROM personal,usuario WHERE personal.cedula='$cedula' and usuario.cedula_personal='$cedula'";
 		$result=pg_query($this->conectar->con(), $sql);
 		$encontrados=pg_num_rows($result);
@@ -130,30 +129,22 @@ class usuario {
 
 
 	/**
-	* modifica a un Personal.
+	* modifica a un Usuario.
 	*
 	*/
-	public function modificar($cedula){
+	public function editarUsuario($cedula,$tipo,$estatus){
 
-		$nombre=$_POST['nombre'];
-		$apellido=$_POST['apellido'];
-		$cedula=$_POST['cedula'];
-		$correo=$_POST['correo'];
-		$cargo=$_POST['cargo'];
-		$fecha_n=$_POST['fecha_n'];
-		$estatus=$_POST['estatus'];
-			
-		$sql=" UPDATE personal set nombre='$nombre',apellido='$apellido',correo='$correo',cargo='$cargo',fecha_n='$fecha_n',estatus='$estatus' where cedula='$cedula'";
+		$sql=" UPDATE usuario set tipo='$tipo',estatus='$estatus' where cedula_personal='$cedula'";
 
 		$result= pg_query($this->conectar->con(),$sql);	
 
 		if(!$result){
 				echo"<script> alert ('Datos no Modificado ¡Vuelva a Intentarlo!');</script>";
-				echo"<script> location.href='/SISTEMA/Gestionar_Personal/Editar_personal/Editar_Personal.php';</script> ";
+				echo"<script> location.href='/SISTEMA/usuario/editar-usuario.php';</script> ";
 			
 			}else{
 				echo"<script> alert ('Datos  Modificado!');</script>";
-				echo"<script> location.href='/SISTEMA/Gestionar_Personal/Editar_personal/Editar_Personal.php';</script> ";
+				echo"<script> location.href='/SISTEMA/usuario/editar-usuario.php';</script> ";
 		}	
 	}//fin modificar()
 
@@ -186,7 +177,18 @@ class usuario {
 
 	} //fin logueo()
 
+	public function findUsuario($cedula='')
+	{
+		$sql="SELECT * FROM personal,usuario WHERE personal.cedula='$cedula' and usuario.cedula_personal='$cedula'";
+		$result=pg_query($this->conectar->con(), $sql);
+		$encontrados=pg_num_rows($result);
 
+		if ($encontrados > 0) {
+				return pg_fetch_array($result);
+		}else{
+			return 0;
+		}
+	}
 
 
 

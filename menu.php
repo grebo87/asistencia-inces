@@ -65,7 +65,8 @@
 
             <li><a href="/SISTEMA/usuario/registro-usuario.php">Registrar Usuario</a></li>
           
-<li><a href="/SISTEMA/usuario/consultar-usuario.php">Consultar Datos</a></li>
+            <li><a href="/SISTEMA/usuario/consultar-usuario.php">Consultar Datos</a></li>
+            <li><a href="/SISTEMA/usuario/editar-usuario.php">Editar Usuario</a></li>
           
 
 
