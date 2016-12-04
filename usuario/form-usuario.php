@@ -2,7 +2,7 @@
 	<fieldset>	
 
 		<label class="label_formulario" for="cedula">Cedula </label>
-		<select name="cedula"  id="cedula"  required>
+		<select name="cedula"  id="cedula" class="js-example-basic-single" required>
 					<?php echo $usuario->buscarPersonal(); ?>
 		</select> 
 		<br>
