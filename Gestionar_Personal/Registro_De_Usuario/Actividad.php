@@ -6,7 +6,7 @@ class actividad
 		public function actividad($actividad)
 			{
 				$fecha=date('Y-m-d');
-				$sql="SELECT * from personal WHERE cedula ='".$_SESSION['cedula']."'";
+				$sql="SELECT * from personal WHERE cedula ='".$_SESSION['id']."'";
 	$result= pg_query($conectar->con(),$sql);
 
 				

@@ -49,6 +49,46 @@
           </ul>
         </div>
       </li>
+
+
+
+
+
+
+
+<li>
+      <label for="home7"> Gestionar Usuarios</label>
+          <input type="radio" name="verticalMenu" id="home7" />
+        <div>
+          <ul>
+            
+
+            <li><a href="/SISTEMA/usuario/registro-usuario.php">Registrar Usuario</a></li>
+          
+<li><a href="/SISTEMA/usuario/consultar-usuario.php">Consultar Datos</a></li>
+          
+
+
+
+          </ul>
+        </div>
+      </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <li>
        <li>
        <label for="home5"> Ayuda </label>

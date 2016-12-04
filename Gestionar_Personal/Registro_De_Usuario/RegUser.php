@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
         session_start();
-        if ( $_SESSION['cedula'] ) {
+        if ( $_SESSION['id'] ) {
           
 
 ?>
@@ -54,7 +54,9 @@
             <input type="text" id="cedula" name="cedula" placeholder="Ej:27637377" required />
             
             
-            
+                        <label class="label_formulario"  for="cod_personal">Codigó Personal: </label>
+            <input type="text" name="cod_personal" id="cod_personal"  required>
+            <br/>
             
             <label class="label_formulario" for="fecha_n">Fecha de Nacimiento: </label>
             <input type="date" id="fecha_n" name="fecha_n"   required> <br>

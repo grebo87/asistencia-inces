@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>U.E "Nuestra Señora del Carmen" </title>
+<title>inces </title>
 
 <link rel="stylesheet" type="text/css" href="styleformueditar.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="/SISTEMA/CSS/Style_Sistema.css"/>

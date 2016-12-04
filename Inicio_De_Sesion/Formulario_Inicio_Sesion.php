@@ -37,12 +37,12 @@
 	<h1>Inicio de Sesión</h1>
 	<form  action="/SISTEMA/Gestionar_Personal/Registro_De_Usuario/logueo.php" enctype="multipart/form-data" method="POST" name="formulario" id="formulario">
 		<fieldset>
-			<label  >Clave</label><br>
-            <input type="text" id="cedula" name="cedula" placeholder="Ej:27637377"  required />
+			<label  >Login</label><br>
+            <input type="text" id="login" name="login" placeholder="login"  required />
 			<br/>
-			<label >Correo </label>
+			<label >Contraseña </label>
 			<br />
-			<input type="text" id="correo" name="correo" placeholder="Ej:usuario@dominio.com" required />
+			<input type="password" id="contrasena" name="contrasena" placeholder="contraseña" required />
 			
 	
 			<input type="submit" value="Iniciar Sesión"  id="iniciar"  / > 

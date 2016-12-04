@@ -29,7 +29,7 @@
 <!-- Final - Encabezado de Pagina -->
 
 <!-- Inicio Del Menu Lateral-->
-<?php include realpath(__DIR__.'/../../menu.php'); ?>
+<?php include realpath(__DIR__.'/../menu.php'); ?>
 <!-- Final Del Menu Lateral-->
 
 <!-- Formulario de Registro De Usuario -->

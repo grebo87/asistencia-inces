@@ -19,7 +19,7 @@
   include_once('usuario.php');
 
  $usuario= new usuario();
- $usuario->logueo($_POST['cedula'],$_POST['correo']);
+ $usuario->logueo($_POST['login'],$_POST['contrasena']);
   
   ?>
 </body>

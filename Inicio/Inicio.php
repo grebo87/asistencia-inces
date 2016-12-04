@@ -1,6 +1,6 @@
 <?php 
         session_start();
-        if ( $_SESSION['cedula'] ) {
+        if ( $_SESSION['id'] ) {
           
          
 ?>

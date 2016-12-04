@@ -3,20 +3,22 @@
 
 		<label class="label_formulario"  for="nombre">Nombre </label>
 		<input type="text" name="nombre" id="nombre" value="<?php echo $datos['nombre']; ?>" required>
-		<br/>
-
+		<br>
 		<label class="label_formulario"  for="apellido">Apellido </label>
 		<input type="text" name="apellido" id="apellido" value="<?php echo $datos['apellido'];?>"required>
-					            
+			<br>		            
 		<label class="label_formulario" for="cedula">Cedula</label>
 		<input type="text" id="cedula" name="cedula" placeholder="Ej:27637377" value="<?php echo $datos['cedula'];?>"required readonly />
-		
+		<br>
+		<label class="label_formulario"  for="cod_personal">Codigó Personal: </label>
+        <input type="text" name="cod_personal" id="cod_personal" value="<?php echo $datos['cod_personal'];?>"  required>
+        <br/>
 		<label class="label_formulario" for="fecha_n">Fecha de Nacimiento </label>
-		<input type="date" id="fecha_n" name="fecha_n"  value="<?php echo $datos['fecha_n'];?>" required>  <br>
-							            
+		<input type="date" id="fecha_n" name="fecha_n"  value="<?php echo $datos['fecha_n'];?>" required>
+			<br>				            
 		<label class="label_formulario" for="correo">Email</label>
 		<input type="text" id="correo" name="correo" placeholder="Ej:usuario@dominio.com"  value="<?php echo $datos['correo'];?>" required />
-					          
+			<br>		          
 		<label class="label_formulario" for="cargo">Cargo </label>
 		<select name="cargo"  type="text"  required>
 			<option <?php echo ($datos['cargo'] == 'Administrativo')? 'selected': '' ;?> >Administrativo</option> 
@@ -24,14 +26,13 @@
 			<option <?php echo ($datos['cargo'] == 'Obrero')? 'selected': '' ;?> >Obrero</option>
 		</select> 
 		<br>
-
 		<label class="label_formulario" for="estatus">estatus </label>
 		<select name="estatus"  type="text"  required>
 			<option <?php echo ($datos['estatus'] == '1')? 'selected': '' ;?> value='1' >activo</option> 
 			<option <?php echo ($datos['estatus'] == '0')? 'selected': '' ;?>  value='0'>inactivo</option> 
 		</select> 
 
-
+		<br>
 		<input type="reset" value="Borrar información">
 					            
 		<input type="submit" value="Registrar" />

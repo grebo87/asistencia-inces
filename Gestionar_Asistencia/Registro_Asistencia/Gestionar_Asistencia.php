@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>U.E "Nuestra Señora del Carmen" </title>
+<title>inces </title>
 
 <link href="Style_Registro_Asistencia.css" rel="stylesheet" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" href="/SISTEMA/CSS/Style_Sistema.css"/>

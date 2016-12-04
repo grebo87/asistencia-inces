@@ -7,7 +7,7 @@ class usuario {
 		private $nombre;
 		private $apellido;
 		private $cedula;
-	
+		private $cod_personal;
 		private $correo;
 		private $cargo;
 		private $fecha_n;
@@ -18,7 +18,7 @@ class usuario {
 
 
 
-		public function __construct($nombre,$apellido,$cedula,$correo,$cargo,$fecha_n,$estatus)
+		public function __construct($nombre,$apellido,$cedula,$correo,$cargo,$fecha_n,$estatus,$cod_personal)
 		{
 
 		$this->nombre=$nombre;
@@ -28,6 +28,7 @@ class usuario {
 		$this->cargo=$cargo;
 		$this->fecha_n=$fecha_n;
 		$this->estatus=$estatus;
+		$this->cod_personal = $cod_personal; 
 		$this->conectar = new conectar();
 
 	
@@ -39,10 +40,8 @@ class usuario {
 	*
 	*/	
 	public function registrar_usuario()	{
-		include_once('../../conectar.php');
-		//$conectar = 
 				
-		$sql="INSERT INTO personal(nombre,apellido,cedula,correo,cargo,fecha_n,estatus) VALUES ('$this->nombre','$this->apellido','$this->cedula','$this->correo','$this->cargo','$this->fecha_n','$this->estatus')";
+		$sql="INSERT INTO personal(nombre,apellido,cedula,correo,cargo,fecha_n,status,cod_personal) VALUES ('$this->nombre','$this->apellido','$this->cedula','$this->correo','$this->cargo','$this->fecha_n','$this->estatus','$this->cod_personal')";
 
 		$result= pg_query($this->conectar->con(),$sql);
 
@@ -52,10 +51,10 @@ class usuario {
 		}else{
 			$fecha=date('d-m-Y');
 	 		$actividad =date('h:i:s').'</br>registro un personal  ';
-			$cedula1=$_SESSION['cedula'];
+			$cedula1=$_SESSION['id'];
 			$sql1="INSERT INTO actividad(fecha,actividad,cedula) VALUES ('$fecha','$actividad','$cedula1')";
 			$result1= pg_query($this->conectar->con(),$sql1);
-			//var_dump($sql1, $_SESSION['cedula']);
+			//var_dump($sql1, $_SESSION['id']);
 			echo"<script> alert ('datos guardados!');</script>";
 			echo"<script> location.href='RegUser.php';</script> ";
 
@@ -99,7 +98,7 @@ class usuario {
 		}else{
 			$fecha=date('d-m-Y');
  			$actividad =date('h:i:s').'</br>busco un dato personal  ';
- 			$cedula=$_SESSION['cedula'];
+ 			$cedula=$_SESSION['id'];
 
  			$sql1="INSERT INTO actividad(fecha,actividad,cedula) VALUES ('$fecha','$actividad','$cedula')";
 
@@ -160,8 +159,8 @@ class usuario {
 		$cargo=$_POST['cargo'];
 		$fecha_n=$_POST['fecha_n'];
 		$estatus=$_POST['estatus'];
-			
-		$sql=" UPDATE personal set nombre='$nombre',apellido='$apellido',correo='$correo',cargo='$cargo',fecha_n='$fecha_n',estatus='$estatus' where cedula='$cedula'";
+		$cod_personal = $_POST['cod_personal'];
+		$sql=" UPDATE personal set nombre='$nombre',apellido='$apellido',correo='$correo',cargo='$cargo',fecha_n='$fecha_n',status='$estatus', cod_personal = '$cod_personal' where cedula='$cedula'";
 
 		$result= pg_query($this->conectar->con(),$sql);	
 
@@ -286,30 +285,32 @@ if(!$result)
 }
 
 
+	/**
+	* para loguear  a un Usuario.
+	*
+	*/	
 
-public function logueo($cedula,$correo){
+	public function logueo($login,$contrasena){
 
-	include_once('../../conectar.php');
 
-	$conectar = new conectar();
-	$sql="SELECT * FROM personal WHERE cedula='$cedula' and correo='$correo' and estatus='1'";
-	$result=pg_query($conectar->con(),$sql);
-	$encontrados=pg_num_rows($result);
+			$sql="SELECT * FROM usuario WHERE login='$login' and contrasena='$contrasena' and estatus='1'";
+			$result=pg_query($this->conectar->con(),$sql);
+			$encontrados=pg_num_rows($result);
 
-	if($encontrados > 0)
-	{
-		$datos=pg_fetch_array($result);
-		session_start();
-		$_SESSION['cedula']=$datos['cedula'];
+			if($encontrados > 0)
+			{
+				$datos=pg_fetch_array($result);
+				session_start();
+				$_SESSION['id']=$datos['id'];
 
-		echo"<script> alert ('Bienvenido!');</script>";
-		echo"<script> location.href='/SISTEMA/Inicio/Inicio.php';</script> ";
-	}else{
-		echo"<script> alert ('Uno de sus datos no han sido correctos ¡Vuelva a Intentarlo!');</script>";
-		echo"<script> location.href='/SISTEMA/Inicio_De_Sesion/Formulario_Inicio_Sesion.php';</script> ";
-	}
+				echo"<script> alert ('Bienvenido!');</script>";
+				echo"<script> location.href='/SISTEMA/Inicio/Inicio.php';</script> ";
+			}else{
+				echo"<script> alert ('Uno de sus datos no han sido correctos ¡Vuelva a Intentarlo!');</script>";
+				echo"<script> location.href='/SISTEMA/Inicio_De_Sesion/Formulario_Inicio_Sesion.php';</script> ";
+			}
 
-} 
+	} //fin logueo()
 
 
 
