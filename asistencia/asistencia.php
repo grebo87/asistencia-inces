@@ -86,6 +86,22 @@ class asistencia
 		}
 	}
 
+	public function allInasistencia($cedula='')
+	{
+		$sql="select * from inasitencia where cedula='$cedula'";
+		$result=pg_query($this->conectar->con(), $sql);
+		$encontrados=pg_num_rows($result);
+
+		if ($encontrados > 0) {
+			return pg_fetch_all($result);
+		}else{
+			return 0;
+		}
+	}
+
+
+	
+
 
 }
 
