@@ -24,6 +24,9 @@ include '../layouts/sidebar.php';
 		
 		<div class="row">
 			<div class="col-xs-12 col-md-12 col-lg-12">
+				<center>
+					<img src="/SISTEMA/Imagenes_Sistema/inces.png" height="400" width="400">
+				</center>
 				
 			</div>
 		

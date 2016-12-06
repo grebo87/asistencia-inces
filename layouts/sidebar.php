@@ -5,7 +5,7 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="../inicio/inicio.php"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg>Inicio</a></li>
+			<li class=""><a href="../inicio/inicio.php"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg>Inicio</a></li>
 			<li class="parent">
 				<a data-toggle="collapse" href="#sub-usuario">
 					<span ><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg></span> Usuarios 
@@ -25,36 +25,108 @@
 				</ul>
 			</li>
 			
-			<li><a href="widgets.html"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Personal</a></li>
-			<li><a href="charts.html"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Asistencia</a></li>
-			<li><a href="tables.html"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Reportes</a></li>
-			<li><a href="forms.html"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>
-			<li><a href="panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts &amp; Panels</a></li>
-			<li><a href="icons.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>
-			<li class="parent ">
-				<a href="#">
-					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown 
+			<li class="parent">
+				<a data-toggle="collapse" href="#sub-personal">
+					<span class="glyphicon glyphicon-user"></span> Personal 
 				</a>
-				<ul class="children collapse" id="sub-item-1">
+				<ul class="children collapse" id="sub-personal">
 					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
+						<a class="" href="../personal/index.php">
+							<span class="glyphicon glyphicon-list-alt"></span> Lista
 						</a>
 					</li>
 					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
+						<a class="" href="../personal/cerate-personal.php">
+							<span class="glyphicon glyphicon-plus-sign"> Registrar
 						</a>
 					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
-						</a>
-					</li>
+					
 				</ul>
 			</li>
-			<li role="presentation" class="divider"></li>
-			<li><a href="login.html"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
+
+
+			<li class="parent">
+				<a data-toggle="collapse" href="#sub-asistencia">
+					<span class="glyphicon glyphicon-ok-sign"></span> Asistencia 
+				</a>
+				<ul class="children collapse" id="sub-asistencia">
+					<li>
+						<a class="" href="../asistencia/index.php">
+							<span class="glyphicon glyphicon-plus-sign"></span> Registrar Asistencia
+						</a>
+					</li>
+					<li>
+						<a class="" href="../asistencia/find-asistencia.php">
+							<span class="glyphicon glyphicon-search"></span> Buscar Asistencia
+						</a>
+					</li>
+					<li>
+						<a class="" href="../asistencia/inasistencia.php">
+							<span class="glyphicon glyphicon-plus-sign"> </span> Registrar Inasistencia
+						</a>
+					</li>
+					
+				</ul>
+			</li>
+
+
+			<li class="parent">
+				<a data-toggle="collapse" href="#sub-vacaciones">
+					<span class="glyphicon glyphicon-briefcase"></span>  Vacaciones
+				</a>
+				<ul class="children collapse" id="sub-vacaciones">
+					<li>
+						<a class="" href="../vacaciones/index.php">
+							<span class="glyphicon glyphicon-plus-sign"></span> Registrar 
+						</a>
+					</li>
+					<li>
+						<a class="" href="../vacaciones/find-vacaciones.php">
+							<span class="glyphicon glyphicon-search"> </span> Buscar
+						</a>
+					</li>
+					
+				</ul>
+			</li>
+
+			<li class="parent">
+				<a data-toggle="collapse" href="#sub-permiso">
+					<span class="glyphicon glyphicon-folder-close"></span>  Permisos
+				</a>
+				<ul class="children collapse" id="sub-permiso">
+					<li>
+						<a class="" href="../permiso/index.php">
+							<span class="glyphicon glyphicon-plus-sign"></span> Registrar 
+						</a>
+					</li>
+					<li>
+						<a class="" href="../permiso/find-permiso.php">
+							<span class="glyphicon glyphicon-search"> </span> Buscar
+						</a>
+					</li>
+					
+				</ul>
+			</li>
+
+
+			<li class="parent">
+				<a data-toggle="collapse" href="#sub-reporte">
+					<span class="glyphicon glyphicon-book"></span>  Reporte
+				</a>
+				<ul class="children collapse" id="sub-reporte">
+					<li>
+						<a class="" href="../reporte/generar-reporte.php">
+							<span class="glyphicon glyphicon-file"></span> Generar Reporte 
+						</a>
+					</li>
+					<li>
+						<a class="" href="../reporte/historial-usuario.php">
+							<span class="glyphicon glyphicon-list"> </span> Historial de Usuario
+						</a>
+					</li>
+					
+				</ul>
+			</li>
 		</ul>
 
 </div><!--/.sidebar-->
