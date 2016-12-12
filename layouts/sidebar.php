@@ -13,7 +13,7 @@
 				<ul class="children collapse" id="sub-usuario">
 					<li>
 						<a class="" href="../usuarios/index.php">
-							<span class="glyphicon glyphicon-list-alt"></span> Lista
+							<span class="glyphicon glyphicon-list-alt"></span> Consultar
 						</a>
 					</li>
 					<li>
@@ -32,12 +32,17 @@
 				<ul class="children collapse" id="sub-personal">
 					<li>
 						<a class="" href="../personal/index.php">
-							<span class="glyphicon glyphicon-list-alt"></span> Lista
+							<span class="glyphicon glyphicon-list-alt"></span> Consultar
 						</a>
 					</li>
 					<li>
 						<a class="" href="../personal/cerate-personal.php">
-							<span class="glyphicon glyphicon-plus-sign"> Registrar
+							<span class="glyphicon glyphicon-plus-sign"> Insertar
+						</a>
+					</li>
+					<li>
+						<a class="" href="../personal/index.php">
+							<span class="glyphicon glyphicon-search"></span> Gestión
 						</a>
 					</li>
 					
@@ -60,7 +65,7 @@
 							<span class="glyphicon glyphicon-search"></span> Buscar Asistencia
 						</a>
 					</li>
-					<li>
+					<!-- <li>
 						<a class="" href="../asistencia/inasistencia.php">
 							<span class="glyphicon glyphicon-plus-sign"> </span> Registrar Inasistencia
 						</a>
@@ -69,7 +74,7 @@
 						<a class="" href="../asistencia/find-inasistencia.php">
 							<span class="glyphicon glyphicon-search"></span> Buscar Inasistencia
 						</a>
-					</li>
+					</li> -->
 					
 				</ul>
 			</li>
@@ -77,38 +82,44 @@
 
 			<li class="parent">
 				<a data-toggle="collapse" href="#sub-vacaciones">
-					<span class="glyphicon glyphicon-briefcase"></span>  Vacaciones
+					<span class="glyphicon glyphicon-folder-close"></span>  Autorizaciones
 				</a>
 				<ul class="children collapse" id="sub-vacaciones">
-					<li>
-						<a class="" href="../vacaciones/index.php">
-							<span class="glyphicon glyphicon-plus-sign"></span> Registrar 
-						</a>
-					</li>
-					<li>
-						<a class="" href="../vacaciones/find-vacaciones.php">
-							<span class="glyphicon glyphicon-search"> </span> Buscar
-						</a>
-					</li>
 					
-				</ul>
-			</li>
-
-			<li class="parent">
-				<a data-toggle="collapse" href="#sub-permiso">
-					<span class="glyphicon glyphicon-folder-close"></span>  Permisos
-				</a>
-				<ul class="children collapse" id="sub-permiso">
+					<li>
+						<a class="" href="#">
+							<span class="glyphicon glyphicon-plus-sign"></span> Dar Permisos
+						</a>
+					</li>
 					<li>
 						<a class="" href="../permiso/index.php">
-							<span class="glyphicon glyphicon-plus-sign"></span> Registrar 
+							<span class="glyphicon glyphicon-plus-sign"></span> Registrar Permisos
 						</a>
 					</li>
 					<li>
 						<a class="" href="../permiso/find-permiso.php">
-							<span class="glyphicon glyphicon-search"> </span> Buscar
+							<span class="glyphicon glyphicon-search"> </span> Buscar Permisos
 						</a>
 					</li>
+					
+
+					<li>
+						<a class="" href="#">
+							<span class="glyphicon glyphicon-plus-sign"></span> Asignar  Vacaciones
+						</a>
+					</li>
+					<li>
+						<a class="" href="../vacaciones/index.php">
+							<span class="glyphicon glyphicon-plus-sign"></span> Registrar  Vacaciones
+						</a>
+					</li>
+					<li>
+						<a class="" href="../vacaciones/find-vacaciones.php">
+							<span class="glyphicon glyphicon-search"> </span> Buscar Vacaciones
+						</a>
+					</li>
+
+
 					
 				</ul>
 			</li>
