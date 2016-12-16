@@ -22,7 +22,7 @@ include '../layouts/sidebar.php';
 		<!-- Tituo de la pagina  -->
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Historial de Usuarios</h1>
+				<h1 class="page-header">Historial de Actividades</h1>
 			</div>
 		</div><!--/.row-->
 		
