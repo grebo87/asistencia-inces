@@ -27,9 +27,14 @@ class reporte
 		}
 	}
 
-	public function all($cedula = '', $observacion = '', $desde = '', $hasta = '')
+	public function all($cedula = '', $observacion = '', $desde = '', $hasta = '', $observacion1 = '')
 	{
-		$sql="select * from inasitencia where cedula='$cedula' and fecha BETWEEN '$desde' AND '$hasta'";
+		if ($observacion1 == 'Injustificada') {
+			$sql="select * from inasitencia where cedula='$cedula' and fecha BETWEEN '$desde' AND '$hasta' and observacion = 'Inasistencia'";
+		}else{
+			$sql="select * from inasitencia where cedula='$cedula' and fecha BETWEEN '$desde' AND '$hasta' and observacion <> 'Inasistencia'";
+		}
+		
 	
 		$result=pg_query($this->conectar->con(), $sql);
 		$encontrados=pg_num_rows($result);

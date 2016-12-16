@@ -41,11 +41,22 @@ include '../layouts/sidebar.php';
 								
 								<div class="row">
         							<div class="col-md-6">
-        								<label class="label_formulario" for="cedula">Tipo </label>
-									    <select name="observacion"  type="text" class="form-control"  required>
+        								<label class="label_formulario" for="tipo">Tipo </label>
+									    <select name="observacion" id="observacion"  type="text" class="form-control"  required>
 									        <option selected value=""> Elige una opción </option>
 									        <option value="Inasistencia">Inasistencia</option>
 									        <option value="Asistencia">Asistencia</option>
+									    </select>
+									</div>
+								</div><br><br>
+
+								<div class="row" id="justificado">
+        							<div class="col-md-6">
+        								<label class="label_formulario" for="observacion">Observacion </label>
+									    <select name="observacion1"  type="text" class="form-control"  required>
+									        <option selected value=""> Elige una opción </option>
+									        <option value="Justificada">Justificada</option>
+									        <option value="Injustificada">Injustificada</option>
 									    </select>
 									</div>
 								</div><br><br>
@@ -85,5 +96,17 @@ include '../layouts/sidebar.php';
 <script>
 	$(document).ready(function(){
     $('#cedula').select2();
+    $( "#justificado" ).hide();
+
+    $("#observacion").change(function() {
+    	
+    	if ($(this).val() == 'Inasistencia') {
+    		$( "#justificado" ).show();
+    	} else{
+    		$( "#justificado" ).hide();
+    	};
+    	
+    	
+    });
 });						 
 </script>
