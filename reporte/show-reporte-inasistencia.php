@@ -6,7 +6,12 @@ $seguridad->verificaSesion1();
 include_once('reporte.php');
 $reporte= new reporte();
 $personal = $reporte->getPersonal($_POST['cedula']);
-$datos = $reporte->all($_POST['cedula'],$_POST['observacion']);
+if ($_POST['observacion'] == 'Inasistencia') {
+	$datos = $reporte->all($_POST['cedula'],$_POST['observacion'],$_POST['desde'],$_POST['hasta']);
+}else{
+	$datos = $reporte->asistencia($_POST['cedula'],$_POST['observacion'],$_POST['desde'],$_POST['hasta']);
+}
+
 include '../layouts/head.php';
 include '../layouts/nav.php';
 include '../layouts/sidebar.php';
@@ -23,7 +28,7 @@ include '../layouts/sidebar.php';
 		<!-- Tituo de la pagina  -->
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Reporte de Inasistencias</h1>
+				<h1 class="page-header">Reporte de <?php echo $_POST['observacion'];?></h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -31,6 +36,7 @@ include '../layouts/sidebar.php';
 			<div class="col-xs-8 col-md-8 col-lg-8">
 			<a href="generar-reporte.php" class="btn btn-default">Regresar</a>
 			<br><br>
+				<h4>Datos del Personal</h4>
 				<table class="table table-striped" cellspacing="0" width="50%">
 					<tbody>
 						<tr>
@@ -46,7 +52,7 @@ include '../layouts/sidebar.php';
 						
 					</tbody>
 				</table><br><br>
-
+					<h4><?php echo $_POST['observacion'];?> Desde <?php echo $_POST['desde'];?> Hasta <?php echo $_POST['hasta'];?></h4>
 				<?php foreach ($datos as $value) { ?>
 					<table class="table table-striped" cellspacing="0" width="50%">
 						<tbody>						

@@ -41,17 +41,28 @@ include '../layouts/sidebar.php';
 								
 								<div class="row">
         							<div class="col-md-6">
-        								<label class="label_formulario" for="cedula">Inasistencia </label>
+        								<label class="label_formulario" for="cedula">Tipo </label>
 									    <select name="observacion"  type="text" class="form-control"  required>
 									        <option selected value=""> Elige una opción </option>
-									        <option value="Inasistencia">Inasistencia Injustificada</option>
-									        <option value="Retraso Injustificada">Retraso</option>
-									        <option value="Reposo Medico">Reposo Medico</option>
-									        <option value="Observacion">Observacion</option>
+									        <option value="Inasistencia">Inasistencia</option>
+									        <option value="Asistencia">Asistencia</option>
 									    </select>
 									</div>
 								</div><br><br>
 
+								<div class="row">
+        							<div class="col-md-6">
+        								<label class="label_formulario" for="desde">Desde </label>
+									    <input type="date" name="desde" id="desde" class="form-control" >
+									</div>
+								</div><br><br>
+
+								<div class="row">
+        							<div class="col-md-6">
+        								<label class="label_formulario" for="hasta">Hasta </label>
+									    <input type="date" name="hasta" id="hasta" class="form-control" >
+									</div>
+								</div><br><br>
 							
 								<div class="form-group">
 									<input type="submit" value="Buscar" class="btn btn-primary">
