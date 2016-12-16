@@ -133,12 +133,12 @@
 					</li>
 					<li>
 						<a class="" href="../reporte/generar-reporte.php">
-							<span class="glyphicon glyphicon-file"></span> Generar Reporte 
+							<span class="glyphicon glyphicon-file"></span> Asistencia / Inasistencia 
 						</a>
 					</li>
 					<li>
 						<a class="" href="../reporte/historial-usuario.php">
-							<span class="glyphicon glyphicon-list"> </span> Historial de Usuario
+							<span class="glyphicon glyphicon-list"> </span> Historial de Actividades
 						</a>
 					</li>
 					

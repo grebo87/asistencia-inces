@@ -23,11 +23,13 @@ include '../layouts/sidebar.php';
 		</div><!--/.row-->
 		
 		<div class="row">
+		<div class="col-xs-10 col-md-10 col-lg-10"></div>
 			<div class="col-xs-12 col-md-12 col-lg-12">
+			<marquee direction="right">
 				<center>
-					<img src="/SISTEMA/Imagenes_Sistema/inces.png" height="400" width="400">
+					<img src="/SISTEMA/Imagenes_Sistema/inces.png" height="400" width="800">
 				</center>
-				
+			</marquee>	
 			</div>
 		
 		</div><!--/.row-->
