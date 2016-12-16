@@ -5,11 +5,9 @@ $seguridad= new seguridad();
 $seguridad->verificaSesion1();
 include_once('personal.php');
 $personal= new personal();
-<<<<<<< HEAD
+
 $persona = $personal->get($_GET['cedula']);
-=======
-$persona = $personal->get($_GET['id']);
->>>>>>> d0d3f847a17b5e40991960670716730cea2597a8
+//$persona = $personal->get($_GET['id']);
 include '../layouts/head.php';
 include '../layouts/nav.php';
 include '../layouts/sidebar.php';
