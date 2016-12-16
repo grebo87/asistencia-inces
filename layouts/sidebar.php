@@ -65,6 +65,11 @@
 							<span class="glyphicon glyphicon-plus-sign"></span> Registrar Asistencia
 						</a>
 					</li>
+					<li>
+						<a class="" href="../asistencia/inasistencia.php">
+							<span class="glyphicon glyphicon-plus-sign"></span> Registrar Inasistencia
+						</a>
+					</li>
 				<!--	<li>
 						<a class="" href="../asistencia/find-asistencia.php">
 							<span class="glyphicon glyphicon-search"></span> Buscar Asistencia
