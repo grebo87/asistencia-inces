@@ -52,8 +52,8 @@ include '../layouts/sidebar.php';
 
 								<div class="row" id="justificado">
         							<div class="col-md-6">
-        								<label class="label_formulario" for="observacion">Observacion </label>
-									    <select name="observacion1"  type="text" class="form-control"  required>
+        								<label class="label_formulario" for="">Observacion </label>
+									    <select name="observacion1"  type="text" class="form-control">
 									        <option selected value=""> Elige una opción </option>
 									        <option value="Justificada">Justificada</option>
 									        <option value="Injustificada">Injustificada</option>
@@ -64,14 +64,14 @@ include '../layouts/sidebar.php';
 								<div class="row">
         							<div class="col-md-6">
         								<label class="label_formulario" for="desde">Desde </label>
-									    <input type="date" name="desde" id="desde" class="form-control" >
+									    <input type="date" name="desde" id="desde" class="form-control" required>
 									</div>
 								</div><br><br>
 
 								<div class="row">
         							<div class="col-md-6">
         								<label class="label_formulario" for="hasta">Hasta </label>
-									    <input type="date" name="hasta" id="hasta" class="form-control" >
+									    <input type="date" name="hasta" id="hasta" class="form-control" required >
 									</div>
 								</div><br><br>
 							

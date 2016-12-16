@@ -1,5 +1,4 @@
 <?php 
-
 include_once('../seguridad/seguridad.php');
 $seguridad= new seguridad();
 $seguridad->verificaSesion1();
@@ -34,9 +33,20 @@ include '../layouts/sidebar.php';
 		
 		<div class="row">
 			<div class="col-xs-8 col-md-8 col-lg-8">
-			<a href="generar-reporte.php" class="btn btn-default">Regresar</a>
+			
+			<form method="post" action="asistenciapdf.php">
+				<input type="hidden" name="cedula" value="<?php echo $_POST['cedula'];?>" >
+				<input type="hidden" name="observacion" value="<?php echo $_POST['observacion'];?>" >
+				<input type="hidden" name="desde" value="<?php echo $_POST['desde'];?>" >
+				<input type="hidden" name="hasta" value="<?php echo $_POST['hasta'];?>" >
+				<input type="hidden" name="observacion1" value="<?php echo $_POST['observacion1'];?>" >
+				<a href="generar-reporte.php" class="btn btn-default">Regresar</a>
+				<input type="submit" value="Descargar" class="btn btn-primary" >
+				
+			</form> 
 			<br><br>
 				<h4>Datos del Personal</h4>
+
 				<table class="table table-striped" cellspacing="0" width="50%">
 					<tbody>
 						<tr>
@@ -77,4 +87,29 @@ include '../layouts/sidebar.php';
 		
 	</div>	<!--/.main-->
 
+	
+
 <?php include '../layouts/footer.php'; ?>	
+
+
+<script>
+	$(document).ready(function(){
+    
+
+    $("#decargarpdf").click(function() {
+    	
+    	 $.ajax({
+            url: 'asistenciapdf.php',
+            type : 'post',
+            data:{ cedula :" <?php echo $_POST['cedula'];?>",observacion : "<?php echo $_POST['observacion'];?>",desde : "<?php echo $_POST['desde'];?>",hasta : "<?php echo $_POST['hasta'];?>",observacion1 : "<?php echo $_POST['observacion1'];?>"  },
+            success:
+                function (data) {
+                    //console.log(data);
+
+                }
+            });
+    	
+    	
+    });
+});						 
+</script>
