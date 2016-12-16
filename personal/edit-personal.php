@@ -22,11 +22,7 @@ include '../layouts/sidebar.php';
 		<!-- Tituo de la pagina  -->
 		<div class="row">
 			<div class="col-lg-12">
-<<<<<<< HEAD
 				<h1 class="page-header">Actualizar Personal</h1>
-=======
-				<h1 class="page-header">Editar Personal</h1>
->>>>>>> d0d3f847a17b5e40991960670716730cea2597a8
 			</div>
 		</div><!--/.row-->
 		

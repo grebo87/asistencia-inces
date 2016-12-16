@@ -149,6 +149,19 @@
 					
 				</ul>
 			</li>
+
+			<li class="parent">
+				<a data-toggle="collapse" href="#sub-manual">
+					<span class="glyphicon glyphicon-folder-open"></span>  Manual 
+				</a>
+				<ul class="children collapse" id="sub-manual">
+					<li>
+						<a class="" href="/SISTEMA/reporte/manual.pdf" target="_blank">
+							<span class="glyphicon glyphicon-book"> </span> Manual de Usuario
+						</a>
+					</li>
+				</ul>
+			</li>
 		</ul>
 
 </div><!--/.sidebar-->

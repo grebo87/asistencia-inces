@@ -51,7 +51,7 @@ include '../layouts/sidebar.php';
 					<table class="table table-striped" cellspacing="0" width="50%">
 						<tbody>						
 							<tr>
-								<td><strong> Fhecha de Inicio </strong></td><td><?php echo $value['inicio'];?></td>
+								<td><strong> Fecha de Inicio </strong></td><td><?php echo $value['inicio'];?></td>
 							</tr>
 							<tr>
 								<td><strong> Fecha de Fin </strong></td><td><?php echo $value['fin'];?></td>

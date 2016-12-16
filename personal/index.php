@@ -45,11 +45,7 @@ include '../layouts/sidebar.php';
 						    			<td> <?php echo $value['apellido'];?> <?php echo $value['nombre'];?></td>
 						    			<td><?php echo $value['cedula'];?></td>
 						    			<td><?php echo $value['cod_personal'];?></td>
-<<<<<<< HEAD
 						    			<td><a href="edit-personal.php?id=<?php echo $value['cedula'];?>" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span></a> <a href="delete-personal.php?id=<?php echo $value['cedula'];?>" class='btn btn-danger' onclick="if(confirm('&iquest;Esta seguro que desea eliminar a esta persona?')) return true;  else return false;"><span class="glyphicon glyphicon-trash"></span></a> </td>
-=======
-						    			<td><a href="show-personal.php?id=<?php echo $value['cedula'];?>" class='btn btn-success'><span class="glyphicon glyphicon-eye-open"></span></a> <a href="edit-personal.php?id=<?php echo $value['cedula'];?>" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span></a> <a href="delete-personal.php?id=<?php echo $value['cedula'];?>" class='btn btn-danger' onclick="if(confirm('&iquest;Esta seguro que desea eliminar a esta persona?')) return true;  else return false;"><span class="glyphicon glyphicon-trash"></span></a> </td>
->>>>>>> d0d3f847a17b5e40991960670716730cea2597a8
 						    		</tr>
 						    <?php } ?>		
 						    </tbody>

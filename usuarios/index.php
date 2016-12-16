@@ -47,7 +47,7 @@ include '../layouts/sidebar.php';
 						    			<td><?php echo $value['login'];?></td>
 						    			<td><?php echo ($value['tipo'] == '1')? 'Administrador' : 'Usuario' ; ?></td>
 						    			<td><?php echo ($value['estatus'] == '1')? 'Activo' : 'Inactivo' ; ?></td>
-						    			<td><a href="show-usuario.php?id=<?php echo $value['id'];?>" class='btn btn-success'><span class="glyphicon glyphicon-eye-open"></span></a> <a href="edit-usuario.php?id=<?php echo $value['id'];?>" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span></a> <a href="delete-usuario.php?id=<?php echo $value['id'];?>" class='btn btn-danger' onclick="if(confirm('&iquest;Esta seguro que desea eliminar a este usuario?')) return true;  else return false;"><span class="glyphicon glyphicon-trash"></span></a> </td>
+						    			<td><a href="edit-usuario.php?id=<?php echo $value['id'];?>" class='btn btn-primary'><span class="glyphicon glyphicon-edit"></span></a> <a href="delete-usuario.php?id=<?php echo $value['id'];?>" class='btn btn-danger' onclick="if(confirm('&iquest;Esta seguro que desea eliminar a este usuario?')) return true;  else return false;"><span class="glyphicon glyphicon-trash"></span></a> </td>
 						    		</tr>
 						    <?php } ?>		
 						    </tbody>
