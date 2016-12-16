@@ -7,7 +7,7 @@ include_once('reporte.php');
 $reporte= new reporte();
 $personal = $reporte->getPersonal($_POST['cedula']);
 if ($_POST['observacion'] == 'Inasistencia') {
-	$datos = $reporte->all($_POST['cedula'],$_POST['observacion'],$_POST['desde'],$_POST['hasta']);
+	$datos = $reporte->all($_POST['cedula'],$_POST['observacion'],$_POST['desde'],$_POST['hasta'],$_POST['observacion1']);
 }else{
 	$datos = $reporte->asistencia($_POST['cedula'],$_POST['observacion'],$_POST['desde'],$_POST['hasta']);
 }
