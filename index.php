@@ -26,7 +26,7 @@
 				<div class="panel-heading">Registro de Asistencia</div>
 				<div class="panel-body">
 					<br>						
-						<form role="form" method="post" action="/SISTEMA/Gestionar_Personal/Registro_De_Usuario/asistencia1.php">
+						<form role="form" method="post" action="/SISTEMA/asistencia/store-asistencia1.php">
 							<fieldset>
 								<div class="form-group">
 									<label>Cedula</label>

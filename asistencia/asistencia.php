@@ -35,6 +35,29 @@ class asistencia
 
 	}
 
+
+	public function storeAsistencia1()
+	{
+		$fecha=date('d-m-Y');
+ 		$hora =date('h:i:s');
+		$cedula=$_POST['cedula'];
+			
+		$sql="INSERT INTO asitencia(fecha,cedula,hora) VALUES ('$fecha','$cedula','$hora')";
+
+		$result= pg_query($this->conectar->con(),$sql);					
+
+
+
+		if(!$result){
+				echo"<script> alert ('Uno de sus datos no han sido correctos ¡Vuelva a Intentarlo!');</script>";
+				echo"<script> location.href='index.php'</script> ";
+		} else{ 
+				echo"<script> alert ('datos guardados!');</script>";
+				echo"<script> location.href='../index.php'</script> ";
+		}
+
+	}
+
 	public function storeInasistencia()
 	{
 		
