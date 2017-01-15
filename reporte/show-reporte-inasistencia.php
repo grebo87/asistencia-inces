@@ -63,22 +63,27 @@ include '../layouts/sidebar.php';
 					</tbody>
 				</table><br><br>
 					<h4><?php echo $_POST['observacion'];?> Desde <?php echo $_POST['desde'];?> Hasta <?php echo $_POST['hasta'];?></h4>
-				<?php foreach ($datos as $value) { ?>
 					<table class="table table-striped" cellspacing="0" width="50%">
-						<tbody>						
+						<thead>
 							<tr>
-								<td><strong> Fhecha </strong></td><td><?php echo $value['fecha'];?></td>
+								<th>Fhecha</th>
+								<th>Hora</th>
+								<th>entrada</th>
+								<th>salida</th>
 							</tr>
+						</thead>
+						<tbody>	
+				<?php foreach ($datos as $value) { ?>											
 							<tr>
-								<td><strong> Hora </strong></td><td><?php echo $value['hora'];?></td>
-							</tr>
-							
-							<tr>
-								<td><strong> Observacio </strong></td><td><?php echo $value['observacion'];?></td>
-							</tr>							
-						</tbody>
-					</table>
+								<td><?php echo $value['fecha'];?></td>
+								<td><?php echo $value['hora'];?></td>
+								<td><?php echo ( $value['entrada'] == 1 ) ? '<span class="glyphicon glyphicon-ok"></span>' : '<span class="glyphicon glyphicon-remove"></span>';?></td>
+								<td><?php echo ( $value['salida'] == 1 ) ? '<span class="glyphicon glyphicon-ok"></span>' : '<span class="glyphicon glyphicon-remove"></span>';?></td>
+							</tr>						
+						
 				<?php } ?>
+						</tbody>
+				</table>
 			</div>
 		
 		</div><!--/.row-->
