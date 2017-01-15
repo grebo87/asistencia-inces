@@ -4,7 +4,8 @@
 	<script src="../js/chart.min.js"></script>
 	<script src="../js/jquery.dataTables.min.js"></script>
 	<script src="../js/select2/js/select2.js"></script>
-	
+	<script src="../js/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="../js/form-validation.js"></script>
 	
 	<script src="../js/bootstrap-datepicker.js"></script>
 	<script>

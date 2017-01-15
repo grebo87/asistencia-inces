@@ -13,6 +13,21 @@ class asistencia
 		$this->conectar = new conectar();
 	}
 
+	public function findAsistencia()
+	{
+		$fecha=date('d-m-Y');
+		$cedula=$_POST['cedula'];
+		$sql="select * from asitencia where cedula='$cedula' and fecha='$fecha' and entrada='1'";
+		$result=pg_query($this->conectar->con(), $sql);
+		$encontrados=pg_num_rows($result);
+
+		if ($encontrados > 0) {
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
 	public function storeAsistencia()
 	{
 		$fecha=date('d-m-Y');
@@ -21,9 +36,7 @@ class asistencia
 			
 		$sql="INSERT INTO asitencia(fecha,cedula,hora) VALUES ('$fecha','$cedula','$hora')";
 
-		$result= pg_query($this->conectar->con(),$sql);					
-
-
+		$result= pg_query($this->conectar->con(),$sql);
 
 		if(!$result){
 				echo"<script> alert ('Uno de sus datos no han sido correctos ¡Vuelva a Intentarlo!');</script>";
@@ -120,6 +133,45 @@ class asistencia
 		}else{
 			return 0;
 		}
+	}
+
+
+	public function regitarEntrada()
+	{
+		$fecha=date('d-m-Y');
+ 		$hora =date('h:i:s');
+		$cedula=$_POST['cedula'];
+			
+		$sql="INSERT INTO asitencia(fecha,cedula,hora,entrada) VALUES ('$fecha','$cedula','$hora','1')";
+
+		$result= pg_query($this->conectar->con(),$sql);	
+		if(!$result){
+				echo"<script> alert ('Uno de sus datos no han sido correctos ¡Vuelva a Intentarlo!');</script>";
+				echo"<script> location.href='index.php'</script> ";
+		} else{ 
+				echo"<script> alert ('datos guardados!');</script>";
+				echo"<script> location.href='index.php'</script> ";
+		}
+
+	}
+
+
+	public function registrarSalida()
+	{
+		$fecha=date('d-m-Y');
+ 		$cedula=$_POST['cedula'];
+			
+		$sql="UPDATE asitencia set salida='1' where cedula='$cedula' and fecha='$fecha' and entrada='1'";
+
+		$result= pg_query($this->conectar->con(),$sql);	
+		if(!$result){
+				echo"<script> alert ('Uno de sus datos no han sido correctos ¡Vuelva a Intentarlo!');</script>";
+				//echo"<script> location.href='index.php'</script> ";
+		} else{ 
+				echo"<script> alert ('datos guardados!');</script>";
+				echo"<script> location.href='index.php'</script> ";
+		}
+
 	}
 
 

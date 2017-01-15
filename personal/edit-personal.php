@@ -30,7 +30,7 @@ include '../layouts/sidebar.php';
 			<div class="col-xs-12 col-md-12 col-lg-12">
 			<a href="index.php" class="btn btn-default">Regresar</a>
 			<br><br>
-				<form  action="update-personal.php" enctype="multipart/form-data" method="POST" name="formulario" id="formulario">
+				<form  action="update-personal.php" enctype="multipart/form-data" method="POST" name="formulario-personal-edit" id="formulario-personal-edit">
     					<?php include realpath('form-edit-personal.php'); ?>
     			</form>
 			</div>

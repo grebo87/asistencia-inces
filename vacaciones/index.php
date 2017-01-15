@@ -28,7 +28,7 @@ include '../layouts/sidebar.php';
 		
 		<div class="row">
 			<div class="col-xs-12 col-md-12 col-lg-12">
-				<form role="form" method="post" action="store-vacaciones.php">
+				<form role="form" method="post" action="store-vacaciones.php" name="formulario-vacaciones">
 							<fieldset>
 								<div class="row">
         							<div class="col-md-6">

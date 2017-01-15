@@ -20,7 +20,7 @@
         <div class="col-md-6">
            
             <label class="label_formulario" for="cedula">Cedula:</label>
-            <input type="text" id="cedula" name="cedula" class="form-control"  placeholder="Ej:27637377" value="<?php echo $persona['cedula']; ?>" required />
+            <input type="text" id="cedulaPersonal" name="cedula" class="form-control"  placeholder="Ej:27637377" value="<?php echo $persona['cedula']; ?>" required />
         </div> 
     </div><br>
 

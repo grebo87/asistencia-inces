@@ -28,7 +28,7 @@ include '../layouts/sidebar.php';
 		
 		<div class="row">
 			<div class="col-xs-12 col-md-12 col-lg-12">
-				<form role="form" method="post" action="show-reporte-inasistencia.php">
+				<form role="form" method="post" action="show-reporte-inasistencia.php" name="formulario-reporte">
 							<fieldset>
 								<div class="row">
         							<div class="col-md-6">

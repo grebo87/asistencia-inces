@@ -28,7 +28,7 @@ include '../layouts/sidebar.php';
 		
 		<div class="row">
 			<div class="col-xs-12 col-md-12 col-lg-12">
-				<form role="form" method="post" action="store-permiso.php">
+				<form role="form" method="post" name="formulario-permiso" action="store-permiso.php">
 							<fieldset>
 								<div class="row">
         							<div class="col-md-6">
