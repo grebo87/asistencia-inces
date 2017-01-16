@@ -1,4 +1,5 @@
 <?php 
+//ini_set('display_errors', '1');
 include_once('../seguridad/seguridad.php');
 $seguridad= new seguridad();
 $seguridad->verificaSesion1();
@@ -67,7 +68,6 @@ include '../layouts/sidebar.php';
 						<thead>
 							<tr>
 								<th>Fhecha</th>
-								<th>Hora</th>
 								<th>entrada</th>
 								<th>salida</th>
 							</tr>
@@ -76,9 +76,8 @@ include '../layouts/sidebar.php';
 				<?php foreach ($datos as $value) { ?>											
 							<tr>
 								<td><?php echo $value['fecha'];?></td>
-								<td><?php echo $value['hora'];?></td>
-								<td><?php echo ( $value['entrada'] == 1 ) ? '<span class="glyphicon glyphicon-ok"></span>' : '<span class="glyphicon glyphicon-remove"></span>';?></td>
-								<td><?php echo ( $value['salida'] == 1 ) ? '<span class="glyphicon glyphicon-ok"></span>' : '<span class="glyphicon glyphicon-remove"></span>';?></td>
+								<td><?php echo ( !is_null($value['entrada'] ) ) ? date('h:i:s a', strtotime($value['entrada']))  : '<span class="glyphicon glyphicon-remove"></span>';?></td>
+								<td><?php echo ( !is_null($value['salida'] )  ) ? date('h:i:s a', strtotime($value['salida']))  : '<span class="glyphicon glyphicon-remove"></span>';?></td>
 							</tr>						
 						
 				<?php } ?>

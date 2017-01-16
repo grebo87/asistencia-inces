@@ -17,7 +17,22 @@ class asistencia
 	{
 		$fecha=date('d-m-Y');
 		$cedula=$_POST['cedula'];
-		$sql="select * from asitencia where cedula='$cedula' and fecha='$fecha' and entrada='1'";
+		$sql="select * from asitencia where cedula='$cedula' and fecha='$fecha' and entrada  is not null ";
+		$result=pg_query($this->conectar->con(), $sql);
+		$encontrados=pg_num_rows($result);
+
+		if ($encontrados > 0) {
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
+	public function findAsistencia1()
+	{
+		$fecha=date('d-m-Y');
+		$cedula=$_POST['cedula'];
+		$sql="select * from asitencia where cedula='$cedula' and fecha='$fecha' and entrada  is not null and salida  is not null";
 		$result=pg_query($this->conectar->con(), $sql);
 		$encontrados=pg_num_rows($result);
 
@@ -139,10 +154,10 @@ class asistencia
 	public function regitarEntrada()
 	{
 		$fecha=date('d-m-Y');
- 		$hora =date('h:i:s');
+ 		$entrada =date('h:i:s a');
 		$cedula=$_POST['cedula'];
 			
-		$sql="INSERT INTO asitencia(fecha,cedula,hora,entrada) VALUES ('$fecha','$cedula','$hora','1')";
+		$sql="INSERT INTO asitencia(fecha,cedula,entrada) VALUES ('$fecha','$cedula','$entrada')";
 
 		$result= pg_query($this->conectar->con(),$sql);	
 		if(!$result){
@@ -158,15 +173,16 @@ class asistencia
 
 	public function registrarSalida()
 	{
+		$salida =date('h:i:s a');
 		$fecha=date('d-m-Y');
  		$cedula=$_POST['cedula'];
 			
-		$sql="UPDATE asitencia set salida='1' where cedula='$cedula' and fecha='$fecha' and entrada='1'";
+		$sql="UPDATE asitencia set salida='$salida' where cedula='$cedula' and fecha='$fecha' and entrada is not null ";
 
 		$result= pg_query($this->conectar->con(),$sql);	
 		if(!$result){
 				echo"<script> alert ('Uno de sus datos no han sido correctos ¡Vuelva a Intentarlo!');</script>";
-				//echo"<script> location.href='index.php'</script> ";
+				echo"<script> location.href='index.php'</script> ";
 		} else{ 
 				echo"<script> alert ('datos guardados!');</script>";
 				echo"<script> location.href='index.php'</script> ";
