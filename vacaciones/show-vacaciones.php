@@ -47,7 +47,9 @@ include '../layouts/sidebar.php';
 					</tbody>
 				</table><br><br>
 
-				<?php foreach ($datos as $value) { ?>
+				<?php 
+					if ($datos != 0) {
+						foreach ($datos as $value) { ?>
 					<table class="table table-striped" cellspacing="0" width="50%">
 						<tbody>						
 							<tr>
@@ -65,7 +67,19 @@ include '../layouts/sidebar.php';
 							</tr>							
 						</tbody>
 					</table>
-				<?php } ?>
+				<?php } 
+					} else { ?>
+						<table class="table table-striped" cellspacing="0" width="50%">
+						<tbody>						
+							<tr>
+								<td>no hay registros</td>
+							</tr>
+														
+						</tbody>
+					</table>
+					<?php } ?>
+					
+					
 			</div>
 		
 		</div><!--/.row-->
