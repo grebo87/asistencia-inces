@@ -13,20 +13,6 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -76,7 +62,8 @@ CREATE TABLE asitencia (
     id integer NOT NULL,
     fecha date,
     cedula character varying(25),
-    hora character varying(20)
+    entrada time without time zone,
+    salida time without time zone
 );
 
 
@@ -110,9 +97,10 @@ ALTER SEQUENCE asitencia_id_seq OWNED BY asitencia.id;
 CREATE TABLE inasitencia (
     id integer NOT NULL,
     fecha date,
-    hora character varying(20),
     cedula character varying(25),
-    observacion text
+    observacion text,
+    observacion2 text,
+    type character varying(50)
 );
 
 
@@ -140,6 +128,44 @@ ALTER SEQUENCE inasitencia_id_seq OWNED BY inasitencia.id;
 
 
 --
+-- Name: permisos; Type: TABLE; Schema: public; Owner: grebo
+--
+
+CREATE TABLE permisos (
+    id integer NOT NULL,
+    cedula character varying(25),
+    motivo text,
+    inicio date,
+    fin date,
+    observacion text,
+    tipo character varying(50)
+);
+
+
+ALTER TABLE permisos OWNER TO grebo;
+
+--
+-- Name: permisos_id_seq; Type: SEQUENCE; Schema: public; Owner: grebo
+--
+
+CREATE SEQUENCE permisos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE permisos_id_seq OWNER TO grebo;
+
+--
+-- Name: permisos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: grebo
+--
+
+ALTER SEQUENCE permisos_id_seq OWNED BY permisos.id;
+
+
+--
 -- Name: personal; Type: TABLE; Schema: public; Owner: grebo
 --
 
@@ -150,11 +176,86 @@ CREATE TABLE personal (
     correo character varying(100),
     cargo character varying(100),
     fecha_n date,
-    estatus integer
+    cod_personal character varying(200),
+    status character varying(100)
 );
 
 
 ALTER TABLE personal OWNER TO grebo;
+
+--
+-- Name: usuario; Type: TABLE; Schema: public; Owner: grebo
+--
+
+CREATE TABLE usuario (
+    id integer NOT NULL,
+    login character varying(100),
+    contrasena character varying(250),
+    tipo integer,
+    cedula_personal character varying(25),
+    estatus integer
+);
+
+
+ALTER TABLE usuario OWNER TO grebo;
+
+--
+-- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: grebo
+--
+
+CREATE SEQUENCE usuario_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE usuario_id_seq OWNER TO grebo;
+
+--
+-- Name: usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: grebo
+--
+
+ALTER SEQUENCE usuario_id_seq OWNED BY usuario.id;
+
+
+--
+-- Name: vacaciones; Type: TABLE; Schema: public; Owner: grebo
+--
+
+CREATE TABLE vacaciones (
+    id integer NOT NULL,
+    cedula character varying(25),
+    estado character varying(100),
+    inicio date,
+    fin date,
+    observacion text
+);
+
+
+ALTER TABLE vacaciones OWNER TO grebo;
+
+--
+-- Name: vacaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: grebo
+--
+
+CREATE SEQUENCE vacaciones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE vacaciones_id_seq OWNER TO grebo;
+
+--
+-- Name: vacaciones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: grebo
+--
+
+ALTER SEQUENCE vacaciones_id_seq OWNED BY vacaciones.id;
+
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: grebo
@@ -175,6 +276,27 @@ ALTER TABLE ONLY asitencia ALTER COLUMN id SET DEFAULT nextval('asitencia_id_seq
 --
 
 ALTER TABLE ONLY inasitencia ALTER COLUMN id SET DEFAULT nextval('inasitencia_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: grebo
+--
+
+ALTER TABLE ONLY permisos ALTER COLUMN id SET DEFAULT nextval('permisos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: grebo
+--
+
+ALTER TABLE ONLY usuario ALTER COLUMN id SET DEFAULT nextval('usuario_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: grebo
+--
+
+ALTER TABLE ONLY vacaciones ALTER COLUMN id SET DEFAULT nextval('vacaciones_id_seq'::regclass);
 
 
 --
@@ -202,11 +324,43 @@ ALTER TABLE ONLY inasitencia
 
 
 --
+-- Name: permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: grebo
+--
+
+ALTER TABLE ONLY permisos
+    ADD CONSTRAINT permisos_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: personal_pkey; Type: CONSTRAINT; Schema: public; Owner: grebo
 --
 
 ALTER TABLE ONLY personal
     ADD CONSTRAINT personal_pkey PRIMARY KEY (cedula);
+
+
+--
+-- Name: usuario_login_key; Type: CONSTRAINT; Schema: public; Owner: grebo
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT usuario_login_key UNIQUE (login);
+
+
+--
+-- Name: usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: grebo
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vacaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: grebo
+--
+
+ALTER TABLE ONLY vacaciones
+    ADD CONSTRAINT vacaciones_pkey PRIMARY KEY (id);
 
 
 --
@@ -231,6 +385,22 @@ ALTER TABLE ONLY asitencia
 
 ALTER TABLE ONLY inasitencia
     ADD CONSTRAINT inasitencia_cedula_fkey FOREIGN KEY (cedula) REFERENCES personal(cedula) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: usuario_cedula_personal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: grebo
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT usuario_cedula_personal_fkey FOREIGN KEY (cedula_personal) REFERENCES personal(cedula) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: vacaciones_cedula_fkey; Type: FK CONSTRAINT; Schema: public; Owner: grebo
+--
+
+ALTER TABLE ONLY vacaciones
+    ADD CONSTRAINT vacaciones_cedula_fkey FOREIGN KEY (cedula) REFERENCES personal(cedula) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
