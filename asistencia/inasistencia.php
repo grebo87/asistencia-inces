@@ -41,16 +41,22 @@ include '../layouts/sidebar.php';
 
 								<div class="row">
         							<div class="col-md-6">
-        								<label class="label_formulario" for="cedula">Observacion </label>
-									    <select name="observacion"  type="text" class="form-control"  required>
+        								<label class="label_formulario" for="cedula">Inasistencia Por: </label>
+									    <select name="observacion" id="observacion" type="text" class="form-control"  required>
 									        <option selected value="0"> Elige una opción </option>
 									        <option value="Inasistencia">Inasistencia Injustificada</option>
-									        <option value="Retraso Injustificada">Retraso</option>
+									        <option value="Retraso Injustificado">Retraso</option>
 									        <option value="Reposo Medico">Reposo Medico</option>
 									        <option value="Observacion">Observacion</option>
 									    </select>
 									</div>
 								</div><br><br>
+
+								<div class="row">
+        							<div class="col-md-6">
+        								<textarea name="observacion2" id="observacion2" class="form-control"  style="display:none;"></textarea>
+									</div>
+								</div><br>
 
 								<div class="form-group">
 									<input type="submit" value="Enviar" class="btn btn-primary">
@@ -73,6 +79,15 @@ include '../layouts/sidebar.php';
 <script>
 	$(document).ready(function(){
     $('#cedula').select2();
+
+    $("#observacion").change(function (e) {
+    	if ($(this).val() == 'Observacion') {
+    			$("#observacion2").css('display','block');
+    			$("#observacion2").focus();
+    	} else{
+    			$("#observacion2").css('display','none');
+    	};
+    });
 });						 
 </script>
 

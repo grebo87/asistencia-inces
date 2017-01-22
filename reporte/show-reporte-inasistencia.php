@@ -64,26 +64,15 @@ include '../layouts/sidebar.php';
 						
 					</tbody>
 				</table><br><br>
-					<h4><?php echo $_POST['observacion'];?> Desde <?php echo $_POST['desde'];?> Hasta <?php echo $_POST['hasta'];?></h4>
-					<table class="table table-striped" cellspacing="0" width="50%">
-						<thead>
-							<tr>
-								<th>Fhecha</th>
-								<th>entrada</th>
-								<th>salida</th>
-							</tr>
-						</thead>
-						<tbody>	
-				<?php foreach ($datos as $value) { ?>											
-							<tr>
-								<td><?php echo $value['fecha'];?></td>
-								<td><?php echo ( !is_null($value['entrada'] ) ) ? date('h:i:s a', strtotime($value['entrada']))  : '<span class="glyphicon glyphicon-remove"></span>';?></td>
-								<td><?php echo ( !is_null($value['salida'] )  ) ? date('h:i:s a', strtotime($value['salida']))  : '<span class="glyphicon glyphicon-remove"></span>';?></td>
-							</tr>						
-						
-				<?php } ?>
-						</tbody>
-				</table>
+					<h4><?php echo $_POST['observacion'];?> Desde <?php echo date('d-m-Y', strtotime($_POST['desde']));?> Hasta <?php echo date('d-m-Y', strtotime($_POST['hasta']));?></h4>
+					<?php 
+						if ($_POST['observacion'] == 'Asistencia') {
+							include 'table-asistencia.php';
+						}else{
+							include 'tableinasistencia.php';
+						}
+					?>
+					
 			</div>
 		
 		</div><!--/.row-->

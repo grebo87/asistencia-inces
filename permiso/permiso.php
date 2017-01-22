@@ -20,13 +20,11 @@ class permiso
 		$tipo	= $_POST["tipo"];
 		$motivo = $_POST["motivo"];
 		$inicio = $_POST["inicio"];
-		$fin = $_POST["fin"];
+		$fin    = $_POST["fin"];
 		$observacion = $_POST["observacion"];
 		$sql="INSERT INTO permisos(cedula,motivo,inicio,fin,observacion,tipo) VALUES ('$cedula','$motivo','$inicio','$fin','$observacion','$tipo')";
 
-		$result= pg_query($this->conectar->con(),$sql);					
-
-
+		$result= pg_query($this->conectar->con(),$sql);	
 
 		if(!$result){
 				echo"<script> alert ('Uno de sus datos no han sido correctos ¡Vuelva a Intentarlo!');</script>";

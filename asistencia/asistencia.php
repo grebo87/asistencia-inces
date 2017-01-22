@@ -16,7 +16,7 @@ class asistencia
 	public function findAsistencia()
 	{
 		$fecha=date('d-m-Y');
-		$cedula=$_POST['cedula'];
+		$cedula=$_GET['cedula'];
 		$sql="select * from asitencia where cedula='$cedula' and fecha='$fecha' and entrada  is not null ";
 		$result=pg_query($this->conectar->con(), $sql);
 		$encontrados=pg_num_rows($result);
@@ -31,7 +31,7 @@ class asistencia
 	public function findAsistencia1()
 	{
 		$fecha=date('d-m-Y');
-		$cedula=$_POST['cedula'];
+		$cedula=$_GET['cedula'];
 		$sql="select * from asitencia where cedula='$cedula' and fecha='$fecha' and entrada  is not null and salida  is not null";
 		$result=pg_query($this->conectar->con(), $sql);
 		$encontrados=pg_num_rows($result);
@@ -47,7 +47,7 @@ class asistencia
 	{
 		$fecha=date('d-m-Y');
  		$hora =date('h:i:s');
-		$cedula=$_POST['cedula'];
+		$cedula=$_GET['cedula'];
 			
 		$sql="INSERT INTO asitencia(fecha,cedula,hora) VALUES ('$fecha','$cedula','$hora')";
 
@@ -93,8 +93,17 @@ class asistencia
  			$hora =date('h:i:s');
  			$cedula = $_POST['cedula'];
  			$observacion = $_POST['observacion'];
-
-			$sql="INSERT INTO inasitencia(fecha,hora,cedula,observacion) VALUES ('$fecha','$hora','$cedula','$observacion')";
+ 			$observacion2 = null;
+ 			if ($_POST['observacion2']) {
+ 				$observacion2 = $_POST['observacion2'];
+ 			}
+ 			if ($observacion == 'Inasistencia' or $observacion == 'Retraso Injustificado' or $observacion == 'Observacion' ) {
+ 				$type = 'injustificada ';
+ 			} else {
+ 				$type = 'justificada';
+ 			}
+ 			
+			$sql="INSERT INTO inasitencia(fecha,cedula,observacion,observacion2,type) VALUES ('$fecha','$cedula','$observacion','$observacion2','$type')";
 
 			$result= pg_query($this->conectar->con(),$sql);					
 
@@ -155,7 +164,7 @@ class asistencia
 	{
 		$fecha=date('d-m-Y');
  		$entrada =date('h:i:s a');
-		$cedula=$_POST['cedula'];
+		$cedula=$_GET['cedula'];
 			
 		$sql="INSERT INTO asitencia(fecha,cedula,entrada) VALUES ('$fecha','$cedula','$entrada')";
 
@@ -175,7 +184,7 @@ class asistencia
 	{
 		$salida =date('h:i:s a');
 		$fecha=date('d-m-Y');
- 		$cedula=$_POST['cedula'];
+ 		$cedula=$_GET['cedula'];
 			
 		$sql="UPDATE asitencia set salida='$salida' where cedula='$cedula' and fecha='$fecha' and entrada is not null ";
 
@@ -191,6 +200,77 @@ class asistencia
 	}
 
 
+	public function entryDay($cedula)
+	{
+		$fecha = date('d-m-Y');
+		$sql="select * from asitencia where cedula='$cedula' and fecha='$fecha'";
+		$result=pg_query($this->conectar->con(), $sql);
+		$encontrados=pg_num_rows($result);
+		$response = '<a title="Registrar Entrada" href="store-entry.php?cedula='.$cedula.'" data-id="'.$cedula.'" class="boton-entrada btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>';
+		if ($encontrados > 0) {
+			$asistencia = pg_fetch_array($result);
+			if( !is_null($asistencia['entrada']) ){
+				$response = date('h:i:s a', strtotime($asistencia['entrada']));
+			}else{
+				$response = '<a title="Registrar Entrada" href="store-entry.php?cedula='.$cedula.'" data-id="'.$cedula.'" class="boton-entrada btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>';
+			}
+			return $response;
+		}else{
+			return $response;
+		}
+	}
+
+
+	public function exitDay($cedula)
+	{
+		$fecha = date('d-m-Y');
+		$sql="select * from asitencia where cedula='$cedula' and fecha='$fecha'";
+		$result=pg_query($this->conectar->con(), $sql);
+		$encontrados=pg_num_rows($result);
+		$response = '<a title="Registrar Salida" href="store-exit.php?cedula='.$cedula.'" data-id="'.$cedula.'" class="boton-entrada btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>';
+		if ($encontrados > 0) {
+			$asistencia = pg_fetch_array($result);
+			if( !is_null($asistencia['salida']) ){
+				$response = date('h:i:s a', strtotime($asistencia['salida']));
+			}else{
+				$response = '<a title="Registrar Salida" href="store-exit.php?cedula='.$cedula.'" data-id="'.$cedula.'" class="boton-entrada btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>';
+			}
+			return $response;
+		}else{
+			return $response;
+		}
+	}
+
+
+	public function findEntry()
+	{
+		$fecha=date('d-m-Y');
+		$cedula=$_GET['cedula'];
+		$sql="select * from asitencia where cedula='$cedula' and fecha='$fecha' and entrada  is not null";
+		$result=pg_query($this->conectar->con(), $sql);
+		$encontrados=pg_num_rows($result);
+
+		if ($encontrados > 0) {
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
+	public function findExit()
+	{
+		$fecha=date('d-m-Y');
+		$cedula=$_GET['cedula'];
+		$sql="select * from asitencia where cedula='$cedula' and fecha='$fecha' and entrada  is not null";
+		$result=pg_query($this->conectar->con(), $sql);
+		$encontrados=pg_num_rows($result);
+
+		if ($encontrados > 0) {
+			return 1;
+		}else{
+			return 0;
+		}
+	}
 	
 
 

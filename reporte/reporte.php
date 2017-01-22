@@ -30,9 +30,9 @@ class reporte
 	public function all($cedula = '', $observacion = '', $desde = '', $hasta = '', $observacion1 = '')
 	{
 		if ($observacion1 == 'Injustificada') {
-			$sql="select * from inasitencia where cedula='$cedula' and fecha BETWEEN '$desde' AND '$hasta' and observacion = 'Inasistencia'";
+			$sql="select * from inasitencia where cedula='$cedula' and fecha BETWEEN '$desde' AND '$hasta' and type = 'injustificada'";
 		}else{
-			$sql="select * from inasitencia where cedula='$cedula' and fecha BETWEEN '$desde' AND '$hasta' and observacion <> 'Inasistencia'";
+			$sql="select * from inasitencia where cedula='$cedula' and fecha BETWEEN '$desde' AND '$hasta' and type = 'justificada'";
 		}
 		
 	
