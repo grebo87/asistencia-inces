@@ -78,7 +78,7 @@ class asistencia
 
 		if(!$result){
 				echo"<script> alert ('Uno de sus datos no han sido correctos ¡Vuelva a Intentarlo!');</script>";
-				echo"<script> location.href='index.php'</script> ";
+				echo"<script> location.href='../index.php'</script> ";
 		} else{ 
 				echo"<script> alert ('datos guardados!');</script>";
 				echo"<script> location.href='../index.php'</script> ";
