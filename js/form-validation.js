@@ -27,8 +27,7 @@ $(function() {
         minlength: 6
       },
       r_contrasena:{
-        required: true,
-        equalTo: "email",
+        equalTo: "#contrasena",
 
       },
       tipo : "required",
