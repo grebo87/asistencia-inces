@@ -1,4 +1,5 @@
 <?php
+//ini_set('display_errors', '1');
 include_once('../seguridad/seguridad.php');
 $seguridad= new seguridad();
 $seguridad->verificaSesion1();
@@ -16,102 +17,158 @@ if ($_POST['observacion'] == 'Inasistencia') {
     date_default_timezone_set('America/Caracas');
 $html.='
 
-<style>
-   
-    table.first {
-        color: #003300;
-        font-family: helvetica;
-        font-size: 8pt;
-        border-left: 3px solid red;
-        border-right: 3px solid #FF00FF;
-        border-top: 3px solid green;
-        border-bottom: 3px solid blue;
-        background-color: #ccffcc;
-    }
-    td {
-        border: 2px solid blue;
-        background-color: #ffffee;
-    }
-    td.second {
-        border: 2px dashed green;
-    }
-    div.test {
-        color: #CC0000;
-        background-color: #FFFF66;
-        font-family: helvetica;
-        font-size: 10pt;
-        border-style: solid solid solid solid;
-        border-width: 2px 2px 2px 2px;
-        border-color: green #FF00FF blue red;
+   <!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+    .encabezado{
         text-align: center;
     }
-    
-</style>
-        <!-- Tituo de la pagina  -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Reporte de '.$_POST["observacion"].'</h1>
-            </div>
-        </div><!--/.row-->
-        
-        <div class="row">
-            <div class="col-xs-8 col-md-8 col-lg-8">
-            <br>
-                <h4>Datos del Personal</h4>
+    .titulo{
+        text-align: center;
+    }
+    .datos-persoales{
+        text-align: center;
+    }
+    .tabla-result{
+        text-align: center;
+    }
+
+body {
+    margin: 0;
+    padding: 0;
+    font: 12px/15px "Helvetica Neue",Arial, Helvetica, sans-serif;
+    color: #555;
+    background: #f5f5f5;
+}
+a {
+    color: #666;
+}
+#content {
+    width: 65%;
+    max-width: 690px;
+    margin: 6% auto 0;}
+
+table {
+    overflow: hidden;
+    border: 1px solid #d3d3d3;
+    background: #fefefe;
+    width: 90%;
+    margin: 0 auto 0;
+    border-radius:5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+th, td {padding:18px 28px 18px; text-align:center; }
+th {padding-top:22px; text-shadow: 1px 1px 1px #fff; background:#e8eaeb;}
+td {border-top:1px solid #e0e0e0; border-right:1px solid #e0e0e0;}
+tr.odd-row td {background:#f6f6f6;}
+td.first, th.first {text-align:left}
+td.last {border-right:none;}
+
+td {
+    background: -moz-linear-gradient(100% 25% 90deg, #fefefe, #f9f9f9);
+    background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f9f9f9), to(#fefefe));
+}
+tr.odd-row td {
+    background: -moz-linear-gradient(100% 25% 90deg, #f6f6f6, #f1f1f1);
+    background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f1f1f1), to(#f6f6f6));
+}
+th {
+    background: -moz-linear-gradient(100% 20% 90deg, #e8eaeb, #ededed);
+    background: -webkit-gradient(linear, 0% 0%, 0% 20%, from(#ededed), to(#e8eaeb));
+}
+tr:first-child th.first {
+    -moz-border-radius-topleft:5px;
+    -webkit-border-top-left-radius:5px; /* Saf3-4 */
+}
+tr:first-child th.last {
+    -moz-border-radius-topright:5px;
+    -webkit-border-top-right-radius:5px; /* Saf3-4 */
+}
+tr:last-child td.first {
+    -moz-border-radius-bottomleft:5px;
+    -webkit-border-bottom-left-radius:5px; /* Saf3-4 */
+}
+tr:last-child td.last {
+    -moz-border-radius-bottomright:5px;
+    -webkit-border-bottom-right-radius:5px; /* Saf3-4 */
+}
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: "Glyphicons Halflings";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-remove:before {
+  content: "\e014";
+}
+    </style>
+
+</head>
+<body>
+<div class="encabezado">
+    <img src="../Imagenes_Sistema/inces.png">
+</div>
+<div class="titulo">
+    <h2>Reporte de '.$_POST["observacion"].' Desde '. date("d-m-Y", strtotime($_POST["desde"])).' Hasta '. date("d-m-Y", strtotime($_POST["hasta"])).'</h2> 
+</div><br>
+<div class="datos-persoales">
+    <h4>Datos del Personal</h4>
+
                 <table class="table table-striped" cellspacing="0" width="50%">
                     <tbody>
                         <tr>
-                            <td><strong> Nombre </strong></td><td>'.$personal["apellido"].'  '.$personal["nombre"].' </td>
+                            <td><strong> Nombre </strong></td><td>'.$personal['apellido'].' '.$personal['nombre'].'</td>
                         </tr>
                         <tr>
-                            <td><strong> Cedula </strong></td><td>'.$personal["cedula"].'</td>
+                            <td><strong> Cedula </strong></td><td>'.$personal['cedula'].'</td>
                         </tr>
                         <tr>
-                            <td><strong> Codgo Personal </strong></td><td>'.$personal["cod_personal"].'</td>
+                            <td><strong> Codgo Personal </strong></td><td>'.$personal['cod_personal'].'</td>
                         </tr>
                         
                         
                     </tbody>
-                </table><br><br>
-                    <h4>'.$_POST["observacion"].' Desde  '.$_POST["desde"].' Hasta '.$_POST["hasta"].'</h4>';
-                    $html.='<table class="table table-striped" cellspacing="0" width="80%">
-                        <thead>
-                            <tr>
-                                <th>Fhecha</th>
-                                <th>Hora</th>
-                                <th>entrada</th>
-                                <th>salida</th>
-                            </tr>
-                        </thead>
-                        <tbody> ';
+                </table>
+</div><br><br><br><br>
+<div class="tabla-result">
+<table class="table table-striped" cellspacing="0" width="50%">
+                    <thead>
+                        <tr>
+                            <th>Fecha </th>
+                            <th>Entrada </th>
+                            <th>Salida </th>
+                        </tr>
+                    <thead>
+
+                    <tbody>';
 
                 foreach ($datos as $value) { 
+                    $showEntrada = ( !is_null($value['entrada'] ) ) ? date('h:i:s a', strtotime($value['entrada']))  : '<span>X</span>';
+                    $showSalida = ( !is_null($value['salida'] ) ) ? date('h:i:s a', strtotime($value['salida']))   : '<span>X</span>';
                     $html.= '                    
                             <tr>
-                                <td>'.$value["fecha"].'</td>
-                                <td>'.$value["hora"].'</td>';
-                            if ($value['entrada'] == 1) {
-                                $html.='<td><span class="glyphicon glyphicon-ok"></span></td>';
-                            } else {
-                                $html.='<td><span class="glyphicon glyphicon-remove"></span></td>';
-                            }
-
-                            if ($value['salida'] == 1) {
-                                $html.='<td><span class="glyphicon glyphicon-ok"></span></td>';
-                            } else {
-                                $html.='<td><span class="glyphicon glyphicon-remove"></span></td>';
-                            }                         
-                        $html.='</tr>';
+                                <td>'.$value["fecha"].'</td>';
+                            $html.= '<td>'.$showEntrada.'</td> ';
+                            $html.= '<td>'.$showSalida.' </td>';                      
+                    $html.='</tr>';
                 }
               $html.='
-              </tbody>
-                </table>   
-            </div>
-        
-        </div><!--/.row-->';
+               </tbody>
+                </table>
+              </div>
+</body>
+</html>';
 	
 
 $pdf = new Reportes_pdf();
-$reporte=$pdf->pdf($titulo = "Listado de ". $_POST['observacion'], $formato = 'A4' , $orientacion = 'L' , $html, $archivo = "Reporte_".$_POST['observacion']);
+$reporte=$pdf->pdf($titulo = "Listado de ". $_POST['observacion'], $formato = 'A4' , $orientacion = 'P' , $html, $archivo = "Reporte_".$_POST['observacion']);
 
 ?>
