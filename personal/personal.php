@@ -54,7 +54,7 @@ class personal
 			echo"<script> location.href='create-personal.php';</script> ";
 		}else{
 			$fecha=date('d-m-Y');
-	 		$actividad =date('h:i:s').'</br>registro un personal  ';
+	 		$actividad =date('h:i:s').'registro un personal  ';
 			$cedula1=$_SESSION['id'];
 			$sql1="INSERT INTO actividad(fecha,actividad,cedula) VALUES ('$fecha','$actividad','$cedula1')";
 			$result1= pg_query($this->conectar->con(),$sql1);

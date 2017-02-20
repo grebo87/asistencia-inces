@@ -29,7 +29,7 @@ include '../layouts/sidebar.php';
 		
 		<div class="row">
 			<div class="col-xs-8 col-md-8 col-lg-8">
-			<a href="historial-usuario.php" class="btn btn-default">Regresar</a>
+			<a href="historial-usuario.php" class="btn btn-default">Regresar</a>&nbsp; &nbsp; <a href="pdf_reporte_historial.php?cedula=<?php echo $personal['cedula'];?>" class="btn btn-primary">Descargar</a>
 			<br><br>
 				<table class="table table-striped" cellspacing="0" width="50%">
 					<tbody>
