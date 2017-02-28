@@ -16,20 +16,21 @@ include '../layouts/sidebar.php';
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-				<li class="active">Vacaciones</li>
+				<li class="active">Reporte / Permisos</li>
 			</ol>
 		</div><!--/.row-->
 
 		<!-- Tituo de la pagina  -->
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Datos de las Vacaciones del Personal</h1>
+				<h1 class="page-header">Datos del Permiso</h1>
 			</div>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-xs-8 col-md-8 col-lg-8">
-			<a href="find-vacaciones.php" class="btn btn-default">Regresar</a>
+			<a href="find-permiso.php" class="btn btn-default">Regresar</a>
+			&nbsp; &nbsp; <a href="../reporte/reporte_permiso_pdf.php?cedula=<?php echo $personal['cedula'];?>" class="btn btn-primary">Descargar</a>
 			<br><br>
 				<table class="table table-striped" cellspacing="0" width="50%">
 					<tbody>
@@ -49,20 +50,23 @@ include '../layouts/sidebar.php';
 
 				<?php foreach ($datos as $value) { ?>
 					<table class="table table-striped" cellspacing="0" width="50%">
-						<tbody>						
+						<tbody>	
+							<tr>
+								<td><strong> Tipo </strong></td><td><?php echo $value['tipo'];?></td>
+							</tr>
+							<tr>
+								<td><strong> Motivo </strong></td><td><?php echo $value['motivo'];?></td>
+							</tr>						
 							<tr>
 								<td><strong> Fhecha de Inicio </strong></td><td><?php echo $value['inicio'];?></td>
 							</tr>
 							<tr>
 								<td><strong> Fecha de Fin </strong></td><td><?php echo $value['fin'];?></td>
-							</tr>
-							<tr>
-								<td><strong> Motivo </strong></td><td><?php echo $value['motivo'];?></td>
-							</tr>
-							
+							</tr>						
 							<tr>
 								<td><strong> Observacio </strong></td><td><?php echo $value['observacion'];?></td>
-							</tr>							
+							</tr>
+													
 						</tbody>
 					</table>
 				<?php } ?>

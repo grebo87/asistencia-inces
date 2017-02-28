@@ -15,7 +15,7 @@ include '../layouts/sidebar.php';
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-				<li class="active">Reporte / Busacar Permisos</li>
+				<li class="active">Permisos</li>
 			</ol>
 		</div><!--/.row-->
 
@@ -28,7 +28,7 @@ include '../layouts/sidebar.php';
 		
 		<div class="row">
 			<div class="col-xs-12 col-md-12 col-lg-12">
-				<form role="form" method="post" action="show-permisos.php">
+				<form role="form" method="post" action="show-reporte-permiso.php" name="formulario-permiso-find">
 							<fieldset>
 								<div class="row">
         							<div class="col-md-6">
@@ -38,7 +38,7 @@ include '../layouts/sidebar.php';
 											</select>
 									</div>
 								</div><br>
-								
+
 							
 								<div class="form-group">
 									<input type="submit" value="Buscar" class="btn btn-primary">

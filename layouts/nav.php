@@ -15,7 +15,7 @@
 							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Perfil</a></li>
 							<!-- <li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Settings</a></li> -->
 							
-							<li><a href="../seguridad/logout.php" role="button" onclick="if(confirm('&iquest;Desea salir del Sistema?')) return true;  else return false;"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg>Salir</li>
+							<li><a href="../seguridad/logout.php" role="button" onclick="if(confirm('&iquest;Desea salir del Sistema?')) return true;  else return false;"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg>Salir</a></li>
 						</ul>
 					</li>
 				</ul>
