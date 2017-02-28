@@ -31,6 +31,7 @@ class seguridad
 				$datos=pg_fetch_array($result);
 				session_start();
 				$_SESSION['id']=$datos['id'];
+				$_SESSION['tipoUsuario'] = $datos['tipo'];
 
 				echo"<script> alert ('Bienvenido!');</script>";
 				echo"<script> location.href='/SISTEMA/inicio/inicio.php';</script> ";

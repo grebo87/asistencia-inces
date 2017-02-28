@@ -6,6 +6,9 @@
 		</form>
 		<ul class="nav menu">
 			<li class=""><a href="../inicio/inicio.php"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg>Inicio</a></li>
+			<?php if ($_SESSION['tipoUsuario']) { ?>
+				
+			
 			<li class="parent">
 				<a data-toggle="collapse" href="#sub-usuario">
 					<span ><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg></span> Usuarios 
@@ -24,7 +27,7 @@
 					
 				</ul>
 			</li>
-			
+			<?php } ?>
 			<li class="parent">
 				<a data-toggle="collapse" href="#sub-personal">
 					<span class="glyphicon glyphicon-user"></span> Personal 
