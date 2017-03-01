@@ -128,7 +128,7 @@
 				</ul>
 			</li>
 
-
+			<?php if ($_SESSION['tipoUsuario']) { ?>
 			<li class="parent">
 				<a data-toggle="collapse" href="#sub-reporte">
 					<span class="glyphicon glyphicon-book"></span>  Reporte
@@ -154,7 +154,7 @@
 					
 				</ul>
 			</li>
-
+			<?php } ?>
 			<li class="parent">
 				<a data-toggle="collapse" href="#sub-manual">
 					<span class="glyphicon glyphicon-folder-open"></span>  Manual 
